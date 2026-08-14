@@ -1,7 +1,6 @@
-public class MouseController{
-    private MouseController() {}
+package 종합예제.controller;
 
-    private static final MouseController instance = new MouseController();
 
-    public static MouseController getInstance() {return instance;}
+public class MouseController {
+    
 }
