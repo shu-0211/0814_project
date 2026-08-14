@@ -1,33 +1,34 @@
-package 종합예제.view;
+package view;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
-import 종합예제.controller.MouseController;
-import 종합예제.model.dto.MouseDto;
+import controller.MouseController;
+import model.dto.MouseDto;
 
 public class MouseView {
     private MouseView(){}
     private static final MouseView instance = new MouseView();
     public static MouseView getInstance() {return instance;}
 
-    private MouseController mc = MouseController.getInstance();
+    private MouseController mc2 = MouseController.getInstance();
     private Scanner scanner = new Scanner(System.in,"EUC-KR");
 
     public void run(){
         while (true) {
             try {
-                System.out.println("1.키보드 2. 마우스 3.모니터");
+                System.out.println("1.키보드 2. 마우스 3.모니터  4.종료");
                 System.out.print("선택: ");
                 int ch = scanner.nextInt();
                 if (ch == 1) {
                     mouseMenu();
                 } else if (ch == 2) {
-                    
+                    KeyboardView.getInstance().Keyboardrun();
                 } else if (ch == 3) {
-
+                    MonitorView.getInstance().Monitorrun();
                 } else if (ch == 4) {
-
+                    break;
                 }
             } catch (InputMismatchException e) {
                 System.out.println("다시 입력하세요" + e);
@@ -56,19 +57,19 @@ public class MouseView {
         }
     }
 
-    private MouseDto mouseSave(){
+    public void mouseSave(){
         System.out.print("새로운 마우스 이름 입력: ");      String newName = scanner.next();
         System.out.print("가격 입력: ");                    int newPrice = scanner.nextInt();
-        boolean mouseDto = new MouseDto(newName, newPrice);
-        if (mc.mouseSave(mouseDto)) {
+        MouseDto mouseDto = new MouseDto(newName, newPrice);
+        if (mc2.mouseSave(mouseDto)) {
             System.out.println("등록 성공");
         } else {
             System.out.println("등록 실패");
         }
     }
 
-    private void mouseFindAll(){
-        ArratList<MouseDto> list = mc.mouseFindAll();
+    public void mouseFindAll(){
+        ArrayList<MouseDto> list = mc2.mouseFindAll();
         System.out.println("============마우스 목록============");
         if (list.isEmpty()) {
             System.out.println("등록된 마우스가 없습니다.");
@@ -79,11 +80,11 @@ public class MouseView {
         }
     }
 
-    private void mouseUpdate(){
+    public void mouseUpdate(){
         System.out.print("수정하려는 마우스 이름 입력: ");     String name = scanner.next();
         System.out.print("새로운 마우스 이름 입력: ");         String newName = scanner.next();
         System.out.print("변경할 가격 입력: ");                int newPrice = scanner.nextInt();
-        boolean result = mc.mouseUpdate(name, newName, newPrice);
+        boolean result = mc2.mouseUpdate(name, newName, newPrice);
 
         if (result) {
             System.out.println("수정 성공.");
@@ -92,9 +93,9 @@ public class MouseView {
         }
     }
 
-    private void mouseDelete(){
+    public void mouseDelete(){
         System.out.println("삭제하려는 마우스 이름 입력");     String delName = scanner.next();
-        boolean result = mc.mouseDelete(delName);
+        boolean result = mc2.mouseDelete(delName);
 
         if (result) {
             System.out.println("삭제 성공");

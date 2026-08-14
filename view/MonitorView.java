@@ -22,7 +22,7 @@ public class MonitorView {
     public void Monitorrun(){
         while (true) {
             try{
-                System.out.println("1. 등록 2. 전체조회 3. 개별수정 4. 개별삭제     선택 : ");
+                System.out.println("1. 등록 2. 전체조회 3. 개별수정 4. 개별삭제  5. 뒤로가기    선택 : ");
                 int ch = scan.nextInt();
                 if( ch ==1){ Monitorsave(); }
                 else if(ch == 2){ MonitorfindAll(); }

@@ -28,3 +28,18 @@ insert into Mouse( productName, productPrice )values
     ("로지텍 MX Master 3S", 139000),
     ("삼성전자 무선 마우스 SM - B5100", 15000),
     ("앱코 해커 A600", 19800) ; 
+
+
+CREATE TABLE Keyboard(
+    no INT AUTO_INCREMENT,
+    productName VARCHAR(30),
+    productPrice INT,
+    CONSTRAINT PRIMARY KEY(no)
+);
+
+INSERT INTO Keyboard(productName, productPrice) VALUES
+('로지텍 MX Keys S', 139000),
+('레오폴드 FC900R PD', 240000),
+('키크론 K8 Pro', 169000),
+('커세어 K70 RGB PRO', 167000),
+('앱코 HACKER K660', 66000);

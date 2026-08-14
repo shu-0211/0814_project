@@ -1,11 +1,11 @@
-package 종합예제.model.dao;
+package model.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import 종합예제.model.dto.MouseDto;
+import model.dto.MouseDto;
 
 public class MouseDao extends BaseDao {
     private MouseDao() {}
@@ -21,11 +21,11 @@ public class MouseDao extends BaseDao {
 
             // ? 와일드카드에 마우스 이름, 가격 대입
             ps.setString(1, mouseDto.getProductName());
-            ps.setString(2, mouseDto.getProductPrice());
+            ps.setInt(2, mouseDto.getProductPrice());
 
             int result = ps.executeUpdate(); // 실행 후 처리된 레코드 수 반환
 
-            if (result) {
+            if (result==1) {
                 return true;
             }
 

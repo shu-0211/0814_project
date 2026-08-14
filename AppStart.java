@@ -7,6 +7,6 @@ import view.MonitorView;
 import view.MouseView;
 public class AppStart {
     public static void main(String[] args) {
-        MonitorView.getInstance().Monitorrun();
+        MouseView.getInstance().run();
     } // main end
 } // class end

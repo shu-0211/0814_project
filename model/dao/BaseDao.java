@@ -1,4 +1,4 @@
-package 종합예제.model.dao;
+package model.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
