@@ -1,5 +1,6 @@
 package 종합예제.view;
 
+import java.util.InputMismatchException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,9 +22,9 @@ public class MouseView {
                 System.out.print("선택: ");
                 int ch = scanner.nextInt();
                 if (ch == 1) {
-                    mouseMenu();
-                } else if (ch == 2) {
                     
+                } else if (ch == 2) {
+                    mouseMenu();
                 } else if (ch == 3) {
 
                 } else if (ch == 4) {
@@ -56,19 +57,19 @@ public class MouseView {
         }
     }
 
-    private MouseDto mouseSave(){
+    private void mouseSave(){
         System.out.print("새로운 마우스 이름 입력: ");      String newName = scanner.next();
         System.out.print("가격 입력: ");                    int newPrice = scanner.nextInt();
-        boolean mouseDto = new MouseDto(newName, newPrice);
-        if (mc.mouseSave(mouseDto)) {
+        MouseDto mouseDto = new MouseDto(newName, newPrice);
+        if (MouseController.getInstance().mouseSave(mouseDto)) {
             System.out.println("등록 성공");
         } else {
             System.out.println("등록 실패");
         }
     }
-
+    
     private void mouseFindAll(){
-        ArratList<MouseDto> list = mc.mouseFindAll();
+        ArrayList<MouseDto> list = mc.mouseFindAll();
         System.out.println("============마우스 목록============");
         if (list.isEmpty()) {
             System.out.println("등록된 마우스가 없습니다.");
@@ -88,6 +89,7 @@ public class MouseView {
         if (result) {
             System.out.println("수정 성공.");
         } else{
+            Scanner scan = new Scanner(System.in, "EUC-KR");
             System.out.println("수정 실패, 입력을 다시 확인하세요.");
         }
     }
