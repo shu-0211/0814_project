@@ -21,11 +21,11 @@ public class MouseDao extends BaseDao {
 
             // ? 와일드카드에 마우스 이름, 가격 대입
             ps.setString(1, mouseDto.getProductName());
-            ps.setString(2, mouseDto.getProductPrice());
+            ps.setInt(2, mouseDto.getProductPrice());
 
             int result = ps.executeUpdate(); // 실행 후 처리된 레코드 수 반환
 
-            if (result) {
+            if (result == 1) {
                 return true;
             }
 
@@ -52,9 +52,9 @@ public class MouseDao extends BaseDao {
             while (rs.next()) {
                 // 현재 DB 정보를 하나하나씩 DTO로 변환
                 MouseDto mouseDto = new MouseDto();
-                mouseDto.getNo();
-                mouseDto.getProductName();
-                mouseDto.getProductPrice();
+                mouseDto.setNo();
+                mouseDto.setProductName();
+                mouseDto.setProductPrice();
 
                 // 변환한 dto를 배열에다 담기
                 resultList.add(mouseDto);
@@ -69,7 +69,7 @@ public class MouseDao extends BaseDao {
     public boolean mouseUpdate(String name, String newName, int newPrice){
         try {
             // sql 작성하기
-            String sql = "update Mouse set productName = ? productPrice = ? where productName = ?";
+            String sql = "update Mouse set productName = ?, productPrice = ? where productName = ?";
 
             // sql 기재
             PreparedStatement ps = conn.prepareStatement(sql);

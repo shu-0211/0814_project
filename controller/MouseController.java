@@ -2,7 +2,7 @@ package 종합예제.controller;
 
 import java.util.ArrayList;
 
-import 종합예제.model.dao.Mousedao;
+import 종합예제.model.dao.MouseDao;
 import 종합예제.model.dto.MouseDto;
 
 public class MouseController {
@@ -10,7 +10,7 @@ public class MouseController {
     private static final MouseController instance = new MouseController();
     public static MouseController getInstance() {return instance;}
 
-    private Mousedao md = Mousedao.getInstance();
+    private MouseDao md = MouseDao.getInstance();
 
     public boolean mouseSave(MouseDto mouseDto){
         boolean result = md.mouseSave(mouseDto);
@@ -28,7 +28,7 @@ public class MouseController {
     }
 
     public boolean mouseDelete(String delName) {
-        boolean result = md.mouseDelete();
+        boolean result = md.mouseDelete(delName);
         return result;
     }
 }

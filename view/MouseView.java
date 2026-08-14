@@ -32,6 +32,7 @@ public class MouseView {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("다시 입력하세요" + e);
+                scanner.next();
             }
             
         }
@@ -67,7 +68,7 @@ public class MouseView {
             System.out.println("등록 실패");
         }
     }
-    
+
     private void mouseFindAll(){
         ArrayList<MouseDto> list = mc.mouseFindAll();
         System.out.println("============마우스 목록============");

@@ -4,6 +4,16 @@ public class MouseDto {
     private int no;
     private String productName;
     private int productPrice;
+
+        public BoardDto(String productName, int productPrice) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+    }
+    
+    public int getNo() {
+     
+
+    }
     public int getNo() {
         return no;
     }
